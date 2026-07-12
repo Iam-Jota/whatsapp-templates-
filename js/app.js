@@ -55,7 +55,7 @@ function render() {
   </div>
   <button class="btn-editar text-xs px-2.5 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition" data-id="${plantilla.id}">Editar</button>
 `;
-    lista.appendChild(li);                     // 2. agrega un nodo por dato
+    lista.appendChild(li);                     // 2. agrega un n
 
   });
   renderSelector();
