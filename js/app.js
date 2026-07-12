@@ -2,6 +2,9 @@ const state = {
     plantillas: [] ,
 };          // ← la única fuente de verdad
 
+state.plantillas = cargar();
+render();
+
 function agregarPlantilla(titulo, mensaje, hashtag) {
   const nueva = new Template(titulo, mensaje, hashtag);
   state.plantillas.push(nueva);   // agrega la nueva plantilla al estado
@@ -39,8 +42,8 @@ const lista = document.getElementById("listaPlantillas");
 
 function render() {
   lista.innerHTML = "";                       // 1. limpia lo anterior
-  state.plantillas.forEach(function (plantilla) {
-    const fechaTexto = plantilla.fecha.toLocaleDateString("es-PE");   // Date → te
+  plantillasVisibles().forEach(function (plantilla) {
+    const fechaTexto = new Date(plantilla.fecha).toLocaleDateString("es-PE");   // Date → te
     const li = document.createElement("li");
     li.className = "bg-white p-4 rounded-lg shadow";
     li.innerHTML = `
@@ -60,7 +63,10 @@ function render() {
   });
   renderSelector();
   renderStats();
+  guardar();
 }
+render();
+
 
 const form = document.getElementById("form-plantilla");
 
@@ -133,3 +139,21 @@ function eliminarPlantilla(id) {
   state.plantillas = state.plantillas.filter(plantilla => plantilla.id !== id);  // sin mutar: filtra
   render();
 }
+
+
+function plantillasVisibles() {
+  const filtroTexto = (state.filtro ?? "").toLowerCase();
+  if (filtroTexto === "") return state.plantillas;
+  return state.plantillas.filter(plantilla => plantilla.hashtag.toLowerCase().includes(filtroTexto));
+}
+
+
+document.getElementById("buscador").addEventListener("input", function (evento) {
+  state.filtro = evento.target.value;   // el filtro vive en el estado
+  render();                             // mismo render, datos distintos
+});
+
+document.getElementById("btn-vaciar").addEventListener("click", function () {
+  state.plantillas = [];
+  render();     // render → guardar(); como no queda nada, se borra la clave
+});
