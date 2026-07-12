@@ -3,7 +3,7 @@ const state = {
 };          // ← la única fuente de verdad
 
 state.plantillas = cargar();
-render();
+
 
 function agregarPlantilla(titulo, mensaje, hashtag) {
   const nueva = new Template(titulo, mensaje, hashtag);
@@ -49,8 +49,8 @@ function render() {
     li.innerHTML = `
   <div class="flex items-start justify-between gap-2">
     <strong class="text-slate-800">${plantilla.titulo}</strong>
-    <span class="text-xs text-slate-400 shrink-0">${plantilla.fecha.toLocaleDateString("es-PE")}</span>
-  </div>
+  <span class="text-xs text-slate-400 shrink-0">${fechaTexto}</span>
+    </div>
   <p class="text-sm text-slate-600 mt-1">${plantilla.mensaje}</p>
   <span class="inline-block text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full mt-2">${plantilla.hashtag}</span>
   <div class="flex gap-2 mt-3 pt-2 border-t border-slate-100">
