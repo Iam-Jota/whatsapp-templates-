@@ -12,7 +12,7 @@ const selector = document.getElementById("selector");
 
 function renderSelector() {
   selector.innerHTML = state.plantillas
-    .map((plantilla, indice) => `<option value="${indice}">${plantilla.titulo}</option>`)   // value = posición en el array
+    .map((plantilla, indice) => `<option value="${indice}">${plantilla.titulo}</option>`)   // value = posición en el y
     .join("");
 }
 
