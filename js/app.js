@@ -40,7 +40,7 @@ const lista = document.getElementById("listaPlantillas");
 function render() {
   lista.innerHTML = "";                       // 1. limpia lo anterior
   state.plantillas.forEach(function (plantilla) {
-    const fechaTexto = plantilla.fecha.toLocaleDateString("es-PE");   // Date → texto legible
+    const fechaTexto = plantilla.fecha.toLocaleDateString("es-PE");   // Date → te
     const li = document.createElement("li");
     li.className = "bg-white p-4 rounded-lg shadow";
     li.innerHTML = `
