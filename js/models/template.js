@@ -1,4 +1,4 @@
-class Template {
+export class template {
   constructor(titulo, mensaje, hashtag) {
     this.id = crypto.randomUUID();   // ← id único garagyujhbjh(ungygyg)
     this.titulo = titulo;
